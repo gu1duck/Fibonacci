@@ -22,7 +22,7 @@ void advanceFibonacciToIndex(Fibonacci *fibonacci, int index);
 
 int main(int argc, const char * argv[]) {
 
-    int target = 5;
+    int target = 10;
     //Fibonacci fibonacci = getFibonacciAtIndex(5);
     Fibonacci fibonacci = newFibonacciAtOne();
     //fibonacci = getFibonacciRecursivelyAtIndex(fibonacci, target);
@@ -35,6 +35,14 @@ int main(int argc, const char * argv[]) {
 Fibonacci newFibonacciAtOne(){
     Fibonacci fibonacci;
     fibonacci.number = 1;
+    fibonacci.prevNumber = 0;
+    return fibonacci;
+}
+
+
+Fibonacci newFibonacciAtZero(){
+    Fibonacci fibonacci;
+    fibonacci.number = 0;
     fibonacci.prevNumber = 0;
     return fibonacci;
 }
@@ -63,11 +71,15 @@ Fibonacci newFibonacciAtOne(){
 //}
 
 void advanceFibonacciToIndex(Fibonacci *fibonacci, int index){
-    int swap = fibonacci->number;
-    fibonacci->number = (fibonacci->number + fibonacci->prevNumber);
-    fibonacci->prevNumber = swap;
-    index--;
-    if (index > 1){
-        advanceFibonacciToIndex(fibonacci,index);
+    if (index == 1) {
+        *fibonacci = newFibonacciAtZero();
+    } else {
+        int swap = fibonacci->number;
+        fibonacci->number = (fibonacci->number + fibonacci->prevNumber);
+        fibonacci->prevNumber = swap;
+        index--;
+        if (index > 2){
+            advanceFibonacciToIndex(fibonacci,index);
+        }
     }
 }
