@@ -16,14 +16,17 @@ struct Fibonacci {
 };
 
 Fibonacci newFibonacciAtOne();
-Fibonacci getFibonacciAtIndex(int index);
-Fibonacci nextFibonacci(Fibonacci fibonacci);
+//Fibonacci getFibonacciAtIndex(int index);
+Fibonacci getFibonacciRecursivelyAtIndex(Fibonacci fibonacci, int index);
 
 int main(int argc, const char * argv[]) {
 
-    int target = 5;
-    Fibonacci fibonacci = getFibonacciAtIndex(5);
+    int target = 6;
+    //Fibonacci fibonacci = getFibonacciAtIndex(5);
+    Fibonacci fibonacci = newFibonacciAtOne();
+    fibonacci = getFibonacciRecursivelyAtIndex(fibonacci, target);
     printf("%d is Fibonacci number #%d\n", fibonacci.number, target);
+    
     return 0;
 }
 
@@ -34,13 +37,25 @@ Fibonacci newFibonacciAtOne(){
     return fibonacci;
 }
 
-Fibonacci getFibonacciAtIndex(int index){
-    Fibonacci fibonacci = newFibonacciAtOne();
-    
-    for (int i = 1; i < index; i++){
-        int swap = fibonacci.number;
-        fibonacci.number = (fibonacci.number + fibonacci.prevNumber);
-        fibonacci.prevNumber = swap;
+//Fibonacci getFibonacciAtIndex(int index){
+//    Fibonacci fibonacci = newFibonacciAtOne();
+//    
+//    for (int i = 1; i < index; i++){
+//        int swap = fibonacci.number;
+//        fibonacci.number = (fibonacci.number + fibonacci.prevNumber);
+//        fibonacci.prevNumber = swap;
+//    }
+//    return fibonacci;
+//}
+
+Fibonacci getFibonacciRecursivelyAtIndex(Fibonacci fibonacci, int index){
+    int swap = fibonacci.number;
+    fibonacci.number = (fibonacci.number + fibonacci.prevNumber);
+    fibonacci.prevNumber = swap;
+    index--;
+    if (index > 1){
+        return getFibonacciRecursivelyAtIndex(fibonacci,index);
+    } else {
+        return fibonacci;
     }
-    return fibonacci;
 }
