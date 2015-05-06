@@ -67,7 +67,7 @@ void advanceFibonacciToIndex(Fibonacci *fibonacci, int index){
     fibonacci->number = (fibonacci->number + fibonacci->prevNumber);
     fibonacci->prevNumber = swap;
     index--;
-    if (index){
+    if (index > 1){
         advanceFibonacciToIndex(fibonacci,index);
     }
 }
