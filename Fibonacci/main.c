@@ -35,7 +35,7 @@ int main(int argc, const char * argv[]) {
 Fibonacci newFibonacciAtOne(){
     Fibonacci fibonacci;
     fibonacci.number = 1;
-    fibonacci.prevNumber = 1;
+    fibonacci.prevNumber = 0;
     return fibonacci;
 }
 
@@ -67,7 +67,7 @@ void advanceFibonacciToIndex(Fibonacci *fibonacci, int index){
     fibonacci->number = (fibonacci->number + fibonacci->prevNumber);
     fibonacci->prevNumber = swap;
     index--;
-    if (index > 1){
+    if (index){
         advanceFibonacciToIndex(fibonacci,index);
     }
 }
