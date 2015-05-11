@@ -15,7 +15,7 @@ struct Fibonacci {
     int prevNumber;
 };
 
-Fibonacci newFibonacciAtOne();
+Fibonacci newFibonacciAtOne(); 
 //Fibonacci getFibonacciAtIndex(int index);
 //Fibonacci getFibonacciRecursivelyAtIndex(Fibonacci fibonacci, int index);
 void advanceFibonacciToIndex(Fibonacci *fibonacci, int index);
